@@ -1,0 +1,86 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group = 'io.github.pluginupdatecore'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven { name = "papermc-repo"; url = "https://repo.papermc.io/repository/maven-public/" }
+}
+
+dependencies {
+    // Paper API - compileOnly because servers provide this
+    compileOnly 'io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT'
+
+    // Lombok for cleaner code
+    compileOnly 'org.projectlombok:lombok:1.18.42'
+    annotationProcessor 'org.projectlombok:lombok:1.18.42'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+    withJavadocJar()
+    withSourcesJar()
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release.set(21)
+}
+
+javadoc {
+    options.encoding = 'UTF-8'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'io.github'
+            artifactId = 'pluginupdatecore'
+            version = project.version
+            from components.java
+
+            pom {
+                name = 'PluginUpdateCore'
+                description = 'A simple and efficient plugin update checker for Minecraft plugins.'
+                url = 'https://github.com/NighterDevelopment/PluginUpdateCore'
+
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'nighter'
+                        name = 'Nighter'
+                        email = 'notnighter@gmail.com'
+                    }
+                }
+
+                scm {
+                    connection = 'scm:git:git://github.com/NighterDevelopment/PluginUpdateCore.git'
+                    developerConnection = 'scm:git:ssh://github.com/NighterDevelopment/PluginUpdateCore.git'
+                    url = 'https://github.com/NighterDevelopment/PluginUpdateCore'
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/NighterDevelopment/PluginUpdateCore")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
