@@ -27,8 +27,8 @@ Automatic update checking and configuration management library for Minecraft plu
 
 <dependencies>
     <dependency>
-        <groupId>io.github.pluginupdatecore</groupId>
-        <artifactId>pluginupdatecore</artifactId>
+        <groupId>com.github.NighterDevelopment</groupId>
+        <artifactId>PluginUpdateCore</artifactId>
         <version>1.0.0</version>
         <scope>compile</scope>
     </dependency>
@@ -43,7 +43,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'io.github.pluginupdatecore:pluginupdatecore:1.0.0'
+    implementation 'com.github.NighterDevelopment:PluginUpdateCore:1.0.0'
 }
 ```
 
@@ -311,9 +311,9 @@ Users should not modify this value manually.
 
 ## Requirements
 
-- **Minecraft**: 1.13+ (for Adventure API support)
+- **Minecraft**: 1.21+ (for Adventure API support)
 - **Java**: 21+
-- **Server**: Bukkit/Spigot/Paper or compatible forks
+- **Server**: Paper or compatible forks
 
 ## Best Practices
 
