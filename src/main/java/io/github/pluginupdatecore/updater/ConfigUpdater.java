@@ -107,7 +107,13 @@ public class ConfigUpdater {
             return;
         }
 
-        plugin.getLogger().info("Updating config from version " + configVersionStr + " to " + currentVersion);
+        // Check if this is a first-time installation (version 0.0.0)
+        boolean isFirstInstall = configVersionStr.equals("0.0.0");
+
+        // Only log update messages if this is not a first-time installation
+        if (!isFirstInstall) {
+            plugin.getLogger().info("Updating config from version " + configVersionStr + " to " + currentVersion);
+        }
 
         try {
             // Store user's current values
@@ -123,11 +129,12 @@ public class ConfigUpdater {
             // Check if there are actual differences before creating backup
             boolean configDiffers = hasConfigDifferences(userValues, newConfig);
 
-            if (configDiffers) {
+            // Only create backup and log if this is not a first-time installation
+            if (configDiffers && !isFirstInstall) {
                 File backupFile = new File(plugin.getDataFolder(), "config_backup_" + configVersionStr + ".yml");
                 Files.copy(configFile.toPath(), backupFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
                 plugin.getLogger().info("Config backup created at " + backupFile.getName());
-            } else {
+            } else if (!isFirstInstall) {
                 plugin.getLogger().info("No significant config changes detected, skipping backup creation");
             }
 
@@ -137,7 +144,10 @@ public class ConfigUpdater {
             tempFile.delete();
             plugin.reloadConfig();
 
-            plugin.getLogger().info("Successfully updated config.yml to version " + currentVersion);
+            // Only log success message if this is not a first-time installation
+            if (!isFirstInstall) {
+                plugin.getLogger().info("Successfully updated config.yml to version " + currentVersion);
+            }
 
         } catch (Exception e) {
             plugin.getLogger().severe("Failed to update config: " + e.getMessage());
