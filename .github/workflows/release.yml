@@ -57,7 +57,7 @@ jobs:
       - name: Check if tag exists
         id: check_tag
         run: |
-          if git rev-parse "v${{ env.VERSION }}" >/dev/null 2>&1; then
+          if git rev-parse "${{ env.VERSION }}" >/dev/null 2>&1; then
             echo "exists=true" >> $GITHUB_OUTPUT
             echo "Tag ${{ env.VERSION }} already exists"
           else
@@ -91,17 +91,17 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git tag -a "v${{ env.VERSION }}" -m "Release version ${{ env.VERSION }}"
-          git push origin "v${{ env.VERSION }}"
+          git tag -a "${{ env.VERSION }}" -m "Release version ${{ env.VERSION }}"
+          git push origin "${{ env.VERSION }}"
 
       - name: Create GitHub Release
         if: github.event_name == 'push' && steps.check_tag.outputs.exists == 'false'
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ env.VERSION }}
-          name: Release v${{ env.VERSION }}
+          tag_name: ${{ env.VERSION }}
+          name: Release ${{ env.VERSION }}
           body: |
-            ## PluginUpdateCore v${{ env.VERSION }}
+            ## PluginUpdateCore ${{ env.VERSION }}
             
             ### 📦 Artifacts
             - Main JAR: `PluginUpdateCore-${{ env.VERSION }}.jar`
@@ -145,9 +145,9 @@ jobs:
         run: |
           if [ "${{ steps.check_tag.outputs.exists }}" == "true" ]; then
             echo "✅ Build completed successfully"
-            echo "ℹ️  Release v${{ env.VERSION }} already exists, skipping release creation"
+            echo "ℹ️  Release ${{ env.VERSION }} already exists, skipping release creation"
           else
             echo "✅ Build completed successfully"
-            echo "🚀 Release v${{ env.VERSION }} created successfully"
+            echo "🚀 Release ${{ env.VERSION }} created successfully"
             echo "📦 Artifacts uploaded to GitHub Release"
           fi
