@@ -456,7 +456,7 @@ public class UpdateChecker implements Listener {
         TextColor white = TextColor.fromHexString("#e6e6fa");
 
         Component borderTop = Component.text("━━━━━━━━ UPDATE AVAILABLE ━━━━━━━━").color(deepPurple);
-        Component borderBot = Component.text("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━").color(deepPurple);
+        Component borderBot = Component.text("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━").color(deepPurple);
 
         Component updateMsg = Component.text("➤ New update available!").color(brightGreen);
 
