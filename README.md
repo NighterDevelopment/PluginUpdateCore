@@ -29,7 +29,7 @@ Automatic update checking and configuration management library for Minecraft plu
     <dependency>
         <groupId>com.github.NighterDevelopment</groupId>
         <artifactId>PluginUpdateCore</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.2</version>
         <scope>compile</scope>
     </dependency>
 </dependencies>
@@ -43,7 +43,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.NighterDevelopment:PluginUpdateCore:1.0.0'
+    implementation 'com.github.NighterDevelopment:PluginUpdateCore:1.0.2'
 }
 ```
 
@@ -204,7 +204,7 @@ public class MyPlugin extends JavaPlugin {
 3. **Console Output Example**:
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-         🔮 UPDATE AVAILABLE 🔮
+               🔮 UPDATE AVAILABLE 🔮
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 📦 Current version: 1.0.0

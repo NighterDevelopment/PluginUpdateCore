@@ -141,7 +141,7 @@ public class UpdateChecker implements Listener {
         plugin.getLogger().info(frameColor +
                 "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + CONSOLE_RESET);
         plugin.getLogger().info(frameColor + CONSOLE_BRIGHT_GREEN +
-                "         🔮 UPDATE AVAILABLE 🔮" + CONSOLE_RESET);
+                "                🔮 UPDATE AVAILABLE 🔮" + CONSOLE_RESET);
         plugin.getLogger().info(frameColor +
                 "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + CONSOLE_RESET);
         plugin.getLogger().info("");
@@ -153,7 +153,7 @@ public class UpdateChecker implements Listener {
         plugin.getLogger().info(frameColor +
                 CONSOLE_RESET + "📥 Download the latest version at:" + CONSOLE_RESET);
         plugin.getLogger().info(frameColor + " " +
-                CONSOLE_LAVENDER + formatConsoleText(modrinthLink, 51) + CONSOLE_RESET);
+                CONSOLE_LAVENDER + formatConsoleText(modrinthLink, 100) + CONSOLE_RESET);
         plugin.getLogger().info("");
         plugin.getLogger().info(frameColor +
                 "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" + CONSOLE_RESET);
