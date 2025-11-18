@@ -456,7 +456,7 @@ public class UpdateChecker implements Listener {
         TextColor white = TextColor.fromHexString("#e6e6fa");
 
         Component borderTop = Component.text("━━━━━━━━ UPDATE AVAILABLE ━━━━━━━━").color(deepPurple);
-        Component borderBottom = Component.text("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━").color(deepPurple);
+        Component borderBot = Component.text("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━").color(deepPurple);
 
         Component updateMsg = Component.text("➤ New update available!").color(brightGreen);
 
@@ -482,7 +482,7 @@ public class UpdateChecker implements Listener {
         player.sendMessage(versionsComponent);
         player.sendMessage(downloadButton);
         player.sendMessage(" ");
-        player.sendMessage(borderBottom);
+        player.sendMessage(borderBot);
 
         player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 0.8f, 1.2f);
     }
